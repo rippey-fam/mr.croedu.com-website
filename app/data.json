@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "email": "bob@example.com",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Carol White",
+      "email": "carol@example.com",
+      "role": "user"
+    }
+  ],
+  "posts": [
+    {
+      "id": 101,
+      "userId": 1,
+      "title": "Getting Started with JSON",
+      "content": "JSON is a lightweight data format.",
+      "timestamp": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": 102,
+      "userId": 2,
+      "title": "Web Development Tips",
+      "content": "Here are some useful tips for web development.",
+      "timestamp": "2024-01-16T14:20:00Z"
+    }
+  ]
+}
