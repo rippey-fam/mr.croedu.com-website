@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/:tasks", (req, res) => {
-  let tasks = req.params.tasks.split(", ");
+  let tasks = req.params.tasks.split(",");
+  // take away extra spaces
+  tasks = tasks.map((task) => tasks.trim());
   res.render("todo", { tasks });
 });
 
