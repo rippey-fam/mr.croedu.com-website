@@ -6,6 +6,4 @@ head
 body
     ul
         each item, index in tasks
-            strong 
-                li #{index + 1}. 
-            #{item}
+            li #[strong #{index + 1}.] #{item}
