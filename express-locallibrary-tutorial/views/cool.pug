@@ -1,6 +1,9 @@
-extends layout
-
-block content
-  h1 #{title}, the user
-  p Hello #{title}
-  div You are a very cool person #{title}!
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    h1 Welcome #{name}, the user
+    p Hello #{name}
+    div You are a very cool person #{name}!

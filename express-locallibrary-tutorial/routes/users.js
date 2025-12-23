@@ -12,7 +12,7 @@ router.get("/:username", (req, res) => {
   username = username.split("");
   username[0] = username[0].toUpperCase();
   username = username.join("");
-  res.render("cool", { title: username });
+  res.render("cool", { title: "Welcome " + username, name: username });
 });
 
 module.exports = router;
