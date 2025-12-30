@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Mongoose Test Page
+  p This page is used to test Mongoose integration in the application.
+  h2 Mongoose Data:
+  if !data || data.length === 0
+    p No data found.
+  else
+    // Iterate every object in the `data` array and list its keys/values
+    each item, idx in data
+      h3 Item #{idx + 1}
+      ul
+        - const keys = Object.keys(item || {})
+        if keys.length === 0
+          li (no properties)
+        else
+          each key in keys
+            li
+              strong #{key}:
+              |  #{item[key]}
