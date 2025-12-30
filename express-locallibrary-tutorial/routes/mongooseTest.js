@@ -9,7 +9,7 @@ mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
 const mongoDB =
-  "mongodb+srv://mr_croedu:kZBQ3ZqrIuAICC81@cluster0.jtgshdx.mongodb.net/?appName=Cluster0";
+  "mongodb+srv://mr_croedu:kZBQ3ZqrIuAICC81@cluster0.jtgshdx.mongodb.net/local_library?appName=Cluster0";
 
 // Require Mongoose
 const mongoose = require("mongoose");
