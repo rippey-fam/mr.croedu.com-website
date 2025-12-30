@@ -11,26 +11,10 @@ mongoose.set("strictQuery", false);
 const mongoDB =
   "mongodb+srv://mr_croedu:kZBQ3ZqrIuAICC81@cluster0.jtgshdx.mongodb.net/local_library?appName=Cluster0";
 
-// Require Mongoose
-const mongoose = require("mongoose");
-
-// Define a schema
-
-// Wait for database to connect, logging an error if there is a problem
 router.get("/", async function (req, res, next) {
   try {
     await mongoose.connect(mongoDB);
-    const Schema = mongoose.Schema;
-
-    const TestModelSchema = new Schema({
-      string: String,
-      date: Date,
-    });
-
-    const SomeModel = mongoose.model("TestModel", TestModelSchema);
-    const myData = new SomeModel({ string: "Today", date: Date.now() });
-
-    await await res.render("mongooseTest", {
+    res.render("mongooseTest", {
       data: [
         {
           Name: "Matthew Rippey",
