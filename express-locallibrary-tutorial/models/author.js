@@ -33,7 +33,7 @@ AuthorSchema.virtual("date_of_birth_formatted").get(function () {
     return DateTime.fromJSDate(this.date_of_birth).toLocaleString(
       DateTime.DATE_MED
     );
-  return this.date_of_death ? "Not Listed" : "";
+  return this.date_of_death ? "Not Listed" : "Unknown";
 });
 
 AuthorSchema.virtual("date_of_death_formatted").get(function () {
@@ -41,7 +41,7 @@ AuthorSchema.virtual("date_of_death_formatted").get(function () {
     return DateTime.fromJSDate(this.date_of_death).toLocaleString(
       DateTime.DATE_MED
     );
-  return this.date_of_birth ? "Current" : "";
+  return this.date_of_birth ? "Current" : "Unknown";
 });
 
 // Export model
