@@ -1,6 +1,10 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font:
+    14px "Lucida Grande",
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 
 a {
@@ -11,4 +15,12 @@ a {
   margin-top: 20px;
   padding: 0;
   list-style: none;
+}
+
+.form-group label {
+  margin: 10px 0px 2px;
+}
+
+form > button:last-child {
+  margin: 10px 0px 2px;
 }
