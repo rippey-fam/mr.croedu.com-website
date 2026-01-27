@@ -13,6 +13,7 @@ const BookInstanceSchema = new Schema({
     default: "Maintenance",
   },
   due_back: { type: Date, default: Date.now },
+  current_user: { type: Schema.Types.ObjectId, ref: "User", required: false },
 });
 
 // Virtual for bookinstance's URL
