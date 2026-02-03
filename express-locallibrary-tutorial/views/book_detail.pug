@@ -26,7 +26,10 @@ block content
         p.text-warning #{val.status}
       p #[strong Imprint:] #{val.imprint}
       if val.status!='Available'
-        p #[strong Due back:] #{val.due_back}
+        p #[strong Due back:] #{val.due_back_formatted}
+      if val.current_user 
+        p #[strong To: ]
+          a(href=val.current_user.url) #{val.current_user.name}
       p #[strong Id: ]
         a(href=val.url) #{val._id}
 

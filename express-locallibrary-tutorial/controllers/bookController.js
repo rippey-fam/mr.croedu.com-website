@@ -45,7 +45,7 @@ exports.book_detail = async (req, res, next) => {
   // Get details of books, book instances for specific book
   const [book, bookInstances] = await Promise.all([
     Book.findById(req.params.id).populate("author").populate("genre").exec(),
-    BookInstance.find({ book: req.params.id }).exec(),
+    BookInstance.find({ book: req.params.id }).populate("current_user").exec(),
   ]);
 
   if (book === null) {

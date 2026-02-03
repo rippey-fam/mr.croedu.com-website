@@ -134,6 +134,15 @@ router.get("/bookinstance/:id", book_instance_controller.bookinstance_detail);
 // GET request for list of all BookInstance.
 router.get("/bookinstances", book_instance_controller.bookinstance_list);
 
+router.get(
+  "/bookinstance/:id/checkout",
+  book_instance_controller.bookinstance_checkout_get,
+);
+router.post(
+  "/bookinstance/:id/checkout",
+  book_instance_controller.bookinstance_checkout_post,
+);
+
 /// USER ROUTES ///
 
 // GET request for a list of all Users.

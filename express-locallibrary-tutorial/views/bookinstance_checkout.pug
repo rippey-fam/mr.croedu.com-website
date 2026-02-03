@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 #{title}: !{bookinstance.book.title}
+    h4 Book Instance ID: !{bookinstance.id}
+
+        form(method='POST')
+            div.form-group
+            input#bookinstanceid.form-control(type='hidden', name='bookinstanceid', value=bookinstance._id )
+            div.form-group
+                label(for='user') User ID:
+                input#user.form-control(type='text', placeholder='User ID' name='user' required)
+            button.btn.btn-primary(type='submit') Checkout

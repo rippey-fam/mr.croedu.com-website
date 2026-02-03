@@ -16,8 +16,14 @@ block content
     else
       span.text-warning #{bookinstance.status}
 
+  if bookinstance.current_user 
+    p #[strong To: ]
+      a(href=bookinstance.current_user.url) #{bookinstance.current_user.name}
   if bookinstance.status!='Available'
     p #[strong Due back:] #{bookinstance.due_back_formatted}
+  if bookinstance.status=='Available'
+    a(href=bookinstance.url+'/checkout')
+      button.btn.btn-primary Check Out
   hr
   p
     a(href=bookinstance.url+'/delete') Delete book instance

@@ -1,6 +1,8 @@
 const BookInstance = require("../models/bookinstance");
 const Book = require("../models/book");
+const Users = require("../models/user");
 const { body, validationResult } = require("express-validator");
+const bookinstance = require("../models/bookinstance");
 
 // Display list of all BookInstances.
 exports.bookinstance_list = async (req, res, next) => {
@@ -16,6 +18,7 @@ exports.bookinstance_list = async (req, res, next) => {
 exports.bookinstance_detail = async (req, res, next) => {
   const bookInstance = await BookInstance.findById(req.params.id)
     .populate("book")
+    .populate("current_user")
     .exec();
 
   if (bookInstance === null) {
@@ -26,7 +29,7 @@ exports.bookinstance_detail = async (req, res, next) => {
   }
 
   res.render("bookinstance_detail", {
-    title: "Book:",
+    title: "Book: " + bookInstance.book.title,
     bookinstance: bookInstance,
   });
 };
@@ -120,4 +123,45 @@ exports.bookinstance_update_get = async (req, res, next) => {
 // Handle bookinstance update on POST.
 exports.bookinstance_update_post = async (req, res, next) => {
   res.send("NOT IMPLEMENTED: BookInstance update POST");
+};
+
+// Display bookinstance checkout form on GET.
+exports.bookinstance_checkout_get = async (req, res, next) => {
+  // Get details of bookinstance and all their (in parallel)
+  const bookinstance = await BookInstance.findById(req.params.id)
+    .populate("book")
+    .exec();
+  const users = await Users.find().exec();
+
+  if (bookinstance === null) {
+    // No results.
+    res.redirect("/catalog/books");
+    return;
+  }
+
+  res.render("bookinstance_checkout", {
+    title: "Checkout Book Instance",
+    bookinstance,
+    users,
+  });
+};
+
+// Handle book checkout on POST.
+exports.bookinstance_checkout_post = async (req, res, next) => {
+  const user = await Users.findById(req.body.user);
+  if (user === null) {
+    res.redirect("/catalog/bookinstances");
+    return;
+  }
+  const book = await BookInstance.findById(req.body.bookinstanceid);
+  if (book.status !== "Available") {
+    res.redirect(`/catalog/bookinstance/${req.body.bookinstanceid}`);
+    return;
+  }
+  await BookInstance.findByIdAndUpdate(req.body.bookinstanceid, {
+    current_user: req.body.user,
+    status: "Loaned",
+    due_back: new Date(),
+  });
+  res.redirect("/catalog/bookinstances");
 };
