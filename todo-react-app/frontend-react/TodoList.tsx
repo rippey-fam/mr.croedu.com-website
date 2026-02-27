@@ -11,7 +11,9 @@ export default function TodoList() {
           let addHR = false;
           if (lastChecked !== item.complete) {
             lastChecked = item.complete;
-            addHR = true;
+            if (key !== 0) {
+              addHR = true;
+            }
           }
           return (
             <li key={key}>
@@ -28,7 +30,7 @@ export default function TodoList() {
                     updateItem(item, { complete: ev.target.checked });
                   }}
                 />{" "}
-                {item.title}
+                {item.complete ? <s>{item.title}</s> : item.title}
               </label>
             </li>
           );

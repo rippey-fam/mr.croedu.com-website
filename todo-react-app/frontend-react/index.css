@@ -80,6 +80,7 @@ input[type="text"] {
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1em;
+  width: auto;
 }
 
 @media (prefers-color-scheme: light) {

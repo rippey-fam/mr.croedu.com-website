@@ -27,7 +27,7 @@ export default function AddItemPopup(
       <div className="popup">
         <div
           style={{
-            position: "absolute",
+            position: "fixed",
             top: "0px",
             right: "0px",
             padding: "0.5em",
@@ -41,9 +41,17 @@ export default function AddItemPopup(
         </div>
         <h2>Add New Item</h2>
         <hr />
-        <label>
+        <br />
+        <label
+          style={{
+            display: "grid",
+            gridTemplateColumns: "auto 1fr",
+            gap: "10px",
+            // center everything vertically
+            alignItems: "center",
+          }}
+        >
           Item Name:
-          <br /> <br />
           <input
             type="text"
             value={itemName}
@@ -54,12 +62,11 @@ export default function AddItemPopup(
           />
         </label>
         <br />
-        <br />
         <AddButton
           callback={() => {
             if (itemName) {
               addItem({
-                id: (list.at(-1)?.id ?? 0) - 1,
+                id: (list.at(-1)?.id ?? 1) - 1,
                 title: itemName,
                 complete: false,
               });

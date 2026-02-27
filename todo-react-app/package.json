@@ -7,7 +7,7 @@
     "build:watch": "vite build --watch",
     "start": "npm run build && node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "serverstart": "concurrently \"npm run build:watch\" \"npm run devstart\""
+    "serverstart": "concurrently \"npm run build:watch\" \"npm run devstart\" \"start http://127.0.0.1:3000/todo/\""
   },
   "dependencies": {
     "@vitejs/plugin-react": "5.1.4",
