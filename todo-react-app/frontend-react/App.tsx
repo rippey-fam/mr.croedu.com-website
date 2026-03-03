@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddButton from "./AddButton";
 import TodoList from "./TodoList";
 import { TodoProvider } from "./useTodoList";
-import AddItemPopup from "./AddItemPopup";
+import AddItemPopup from "./addItemPopup";
 
 export default function App() {
   const [addItemDisplayed, changeAddItemDisplayed] = useState(false);
@@ -10,15 +10,15 @@ export default function App() {
     changeAddItemDisplayed(!addItemDisplayed);
     console.log(addItemDisplayed);
   }
-  console.log("building");
-  // const itemName = prompt("New Item Name:");
-  // if (itemName) {
-  //   addItem({
-  //     id: (list.at(-1)?.id ?? 0) - 1,
-  //     title: itemName,
-  //     complete: false,
-  //   });
-  // }
+  let granted = true;
+  Notification.requestPermission().then((result) => {
+    if (result !== "denied") {
+      granted = true;
+    } else {
+      granted = false;
+    }
+  });
+
   return (
     <>
       <h1
@@ -28,6 +28,7 @@ export default function App() {
       >
         Todo List
       </h1>
+      {!granted && <h1>I'M MAD!!!</h1>}
       <TodoProvider>
         <TodoList />
         <AddButton callback={toggleAddItemDisplayed} />

@@ -142,7 +142,11 @@ app.get(/^\/todo(\/.*)?$/, (req, res) => {
   res.sendFile(path.join(__dirname, "public/todo/dist/index.html"));
 });
 
-app.use("/", indexRouter);
+app.use("/", (req, res) => {
+  res.redirect("/todo");
+});
+
+app.use("/index", indexRouter);
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
