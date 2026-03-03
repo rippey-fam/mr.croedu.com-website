@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddButton from "./AddButton";
 import TodoList from "./TodoList";
 import { TodoProvider } from "./useTodoList";
-import AddItemPopup from "./addItemPopup";
+import AddItemPopup from "./AddItemPopup";
 
 export default function App() {
   const [addItemDisplayed, changeAddItemDisplayed] = useState(false);
