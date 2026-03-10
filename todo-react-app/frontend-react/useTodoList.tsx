@@ -65,7 +65,7 @@ function useAsync(callback: () => Promise<any>) {
 function useTodoList() {
   const [list, setList] = useState<Array<TodoItem>>(() => startState);
   const fetchedTodos = useAsync(async () => {
-    const response = await fetch("/api/todos");
+    const response = await fetch("/todo/api/todos");
     const data = response.json();
     return data;
   });
