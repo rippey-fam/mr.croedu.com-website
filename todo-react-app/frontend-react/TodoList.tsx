@@ -5,7 +5,7 @@ export default function TodoList() {
   return (
     <ul>
       {list
-        .sort((a, b) => a.id - b.id)
+        .sort((a, b) => a.index - b.index)
         .sort((a, b) => (a.complete && b.complete ? 0 : a.complete ? 1 : -1))
         .map((item, key) => {
           let addHR = false;

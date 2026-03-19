@@ -77,7 +77,7 @@ function useTodoList() {
   function updateItem(item: TodoItem, newVals: Partial<TodoItem>) {
     setList(
       list.map((old) => {
-        if (old.id !== item.id) {
+        if (old.index !== item.index) {
           return old;
         }
         const newItem = { ...old, ...newVals };
@@ -93,6 +93,9 @@ function useTodoList() {
 export type TodoItem = {
   title: string;
   complete: boolean;
-  id: number;
+  index: number;
+  todo_list: {
+    title: string;
+  };
 };
 export type TodoState = ReturnType<typeof useTodoList>;

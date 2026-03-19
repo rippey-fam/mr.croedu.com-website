@@ -1,9 +1,9 @@
 var express = require("express");
-var router = express.Router();
 const path = require("path");
-const todoController = require("../controllers/todoItemController");
+const mongoose = require("mongoose");
+const Todoitem = require("../models/todoItem");
+const Todolist = require("../models/todoList");
 
-/* GET home page. */
 const startState = [
   {
     title: "Buy groceries",
@@ -106,11 +106,16 @@ const startState = [
     id: 19,
   },
 ];
+// Serving data (to be replaced with mongoose fetches) cross-site to our React App
+exports.todoitems = async (req, res) => {
+  const allTodoItems = await Todoitem.find()
+    .sort({ complete: 1 })
+    .populate("todo_list")
+    .exec();
+  res.json(allTodoItems);
+};
 
-router.get("/api/todos", todoController.todoitems);
-
-// Serve React router at /todo - all routes serve index.html for client-side routing
-router.get("/", todoController.todo_list);
-router.get(/^\/(\/.*)?$/, todoController.todo_list);
-
-module.exports = router;
+// serving our public built react page
+exports.todo_list = (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/todo/dist/index.html"));
+};

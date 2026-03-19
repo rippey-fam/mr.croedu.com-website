@@ -13,4 +13,4 @@ const TodoItemSchema = new Schema({
 });
 
 // Export model
-module.exports = mongoose.model("Author", TodoItemSchema);
+module.exports = mongoose.model("TodoItem", TodoItemSchema);

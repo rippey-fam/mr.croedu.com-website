@@ -66,9 +66,10 @@ export default function AddItemPopup(
           callback={() => {
             if (itemName) {
               addItem({
-                id: (list.at(-1)?.id ?? 1) - 1,
+                index: (list.at(-1)?.index ?? 1) - 1,
                 title: itemName,
                 complete: false,
+                todo_list: { title: list[0].todo_list.title },
               });
               toggleVisibility();
             }

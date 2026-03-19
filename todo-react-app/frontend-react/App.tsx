@@ -1,8 +1,9 @@
 import { useState } from "react";
 import AddButton from "./AddButton";
+import AddItemPopup from "./AddItemPopup";
 import TodoList from "./TodoList";
 import { TodoProvider } from "./useTodoList";
-import AddItemPopup from "./AddItemPopup";
+import TodoHeader from "./TodoHeader";
 
 export default function App() {
   const [addItemDisplayed, changeAddItemDisplayed] = useState(false);
@@ -21,15 +22,9 @@ export default function App() {
 
   return (
     <>
-      <h1
-        style={{
-          textAlign: "center",
-        }}
-      >
-        Todo List
-      </h1>
-      {!granted && <h1>I'M MAD!!!</h1>}
       <TodoProvider>
+        <TodoHeader />
+
         <TodoList />
         <AddButton callback={toggleAddItemDisplayed} />
         {addItemDisplayed && (
