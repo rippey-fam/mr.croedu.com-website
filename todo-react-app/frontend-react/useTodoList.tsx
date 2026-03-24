@@ -90,12 +90,17 @@ function useTodoList() {
   }
   return { list, updateItem, addItem };
 }
+type TodoList = {
+  _id: string;
+  title: string;
+};
+
 export type TodoItem = {
   title: string;
   complete: boolean;
   index: number;
-  todo_list: {
-    title: string;
-  };
+  due_date?: Date;
+  created_at?: Date;
+  todo_list: TodoList; // ObjectId or populated
 };
 export type TodoState = ReturnType<typeof useTodoList>;

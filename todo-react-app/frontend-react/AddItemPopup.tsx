@@ -69,7 +69,10 @@ export default function AddItemPopup(
                 index: (list.at(-1)?.index ?? 1) - 1,
                 title: itemName,
                 complete: false,
-                todo_list: { title: list[0].todo_list.title },
+                todo_list: {
+                  title: list[0].todo_list.title,
+                  _id: list[0].todo_list._id,
+                },
               });
               toggleVisibility();
             }

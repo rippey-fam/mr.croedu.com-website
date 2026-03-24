@@ -1,11 +1,12 @@
 import { useTodoListContext } from "./useTodoList";
+import { format } from "date-fns";
+
 export default function TodoList() {
   const { list, updateItem } = useTodoListContext();
   let lastChecked = false;
   return (
     <ul>
       {list
-        .sort((a, b) => a.index - b.index)
         .sort((a, b) => (a.complete && b.complete ? 0 : a.complete ? 1 : -1))
         .map((item, key) => {
           let addHR = false;
@@ -16,7 +17,7 @@ export default function TodoList() {
             }
           }
           return (
-            <li key={key}>
+            <li key={key} className="todo-item">
               {addHR && <hr />}
               <label
                 style={{
@@ -30,8 +31,24 @@ export default function TodoList() {
                     updateItem(item, { complete: ev.target.checked });
                   }}
                 />{" "}
-                {item.complete ? <s>{item.title}</s> : item.title}
+                {item.complete ? <s>{item.title}</s> : item.title}{" "}
+                <span
+                  style={{
+                    color: "gray",
+                    fontSize: "0.8em",
+                  }}
+                >
+                  {item.created_at ? format(item.created_at, "MM/dd/yyyy") : ""}
+                </span>
               </label>
+
+              <i
+                className="fa-solid fa-pen-to-square"
+                onClick={(ev) => {
+                  alert("Edit item: " + item.title);
+                }}
+              ></i>
+              {/* <i className="fa-regular fa-trash-can"></i> */}
             </li>
           );
         })}

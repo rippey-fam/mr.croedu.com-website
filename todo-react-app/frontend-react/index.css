@@ -95,3 +95,12 @@ input[type="text"] {
     background-color: #f9f9f9;
   }
 }
+
+i.fa-solid.fa-pen-to-square {
+  float: right;
+  visibility: hidden;
+}
+
+.todo-item:hover i.fa-solid.fa-pen-to-square {
+  visibility: visible;
+}

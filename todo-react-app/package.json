@@ -10,8 +10,10 @@
     "serverstart": "concurrently \"npm run build:watch\" \"npm run devstart\" \"start http://127.0.0.1:3000/todo/\""
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
     "@vitejs/plugin-react": "5.1.4",
     "cookie-parser": "^1.4.7",
+    "date-fns": "^4.1.0",
     "debug": "^4.4.1",
     "express": "5.2.1",
     "express-validator": "^7.3.1",
