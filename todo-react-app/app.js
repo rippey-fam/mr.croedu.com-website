@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 // Serve static assets for React app at /todo
-app.use("/", express.static(path.join(__dirname, "/public/todo/dist")));
+app.use("/todo", express.static(path.join(__dirname, "/public/todo/dist")));
 
 app.use("/index", indexRouter);
 app.use("/users", usersRouter);

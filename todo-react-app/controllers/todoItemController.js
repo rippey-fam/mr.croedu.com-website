@@ -28,6 +28,7 @@ exports.todoitems_update = async (req, res) => {
   const updatedFields = req.body.updatedFields;
   const filter = { _id: todoItem._id };
   await Todoitem.findOneAndUpdate(filter, updatedFields);
+  console.log("finished update");
 };
 
 // serving our public built react page
