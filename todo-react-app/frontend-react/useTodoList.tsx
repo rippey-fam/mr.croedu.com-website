@@ -84,6 +84,24 @@ function useTodoList() {
         return newItem;
       }),
     );
+    console.log("making fetch");
+    fetch("/todo/api/todos/update", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        todoItem: item,
+        updatedFields: newVals,
+      }),
+    })
+      .then((response) => {
+        console.log("response:", response);
+        if (!response.ok) {
+          console.error("Failed to update item", response);
+        }
+      })
+      .then(useTodoList);
   }
   function addItem(item: TodoItem) {
     setList([...list, item]);

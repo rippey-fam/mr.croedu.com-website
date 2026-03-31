@@ -112,5 +112,6 @@ router.get("/api/todos", todoController.todoitems);
 // Serve React router at /todo - all routes serve index.html for client-side routing
 router.get("/", todoController.todo_list);
 router.get(/^\/(\/.*)?$/, todoController.todo_list);
+router.post("/api/todos/update", todoController.todoitems_update);
 
 module.exports = router;
