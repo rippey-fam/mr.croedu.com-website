@@ -1,9 +1,8 @@
 import { useState } from "react";
-import AddButton from "./AddButton";
-import AddItemPopup from "./AddItemPopup";
-import TodoList from "./TodoList";
 import { TodoProvider } from "./useTodoList";
-import TodoHeader from "./TodoHeader";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import UpdateItem from "./UpdateItem";
 
 export default function App() {
   const [addItemDisplayed, changeAddItemDisplayed] = useState(false);
@@ -21,16 +20,13 @@ export default function App() {
   });
 
   return (
-    <>
+    <BrowserRouter basename="/todo">
       <TodoProvider>
-        <TodoHeader />
-
-        <TodoList />
-        <AddButton callback={toggleAddItemDisplayed} />
-        {addItemDisplayed && (
-          <AddItemPopup toggleVisibility={toggleAddItemDisplayed} />
-        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/update/" element={<UpdateItem />} />
+        </Routes>
       </TodoProvider>
-    </>
+    </BrowserRouter>
   );
 }

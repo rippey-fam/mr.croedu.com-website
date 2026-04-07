@@ -23,12 +23,20 @@ req object
 }
 */
 exports.todoitems_update = async (req, res) => {
-  console.log("starting update...");
+  const start = Date.now();
+  console.log(
+    `starting update... time diff ${Date.now() - req.body.startTime}ms`,
+  );
   const todoItem = req.body.todoItem;
   const updatedFields = req.body.updatedFields;
   const filter = { _id: todoItem._id };
-  await Todoitem.findOneAndUpdate(filter, updatedFields);
-  console.log("finished update");
+  try {
+    await Todoitem.findOneAndUpdate(filter, updatedFields);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update todo item" });
+  }
+  console.log(`finished update ${Date.now() - start}ms`);
+  res.sendStatus(200);
 };
 
 // serving our public built react page

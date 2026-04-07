@@ -75,6 +75,8 @@ function useTodoList() {
     }
   }, [fetchedTodos]);
   function updateItem(item: TodoItem, newVals: Partial<TodoItem>) {
+    const previousList = list;
+
     setList(
       list.map((old) => {
         if (old.index !== item.index) {
@@ -84,6 +86,7 @@ function useTodoList() {
         return newItem;
       }),
     );
+
     console.log("making fetch");
     fetch("/todo/api/todos", {
       method: "PUT",
@@ -93,11 +96,15 @@ function useTodoList() {
       body: JSON.stringify({
         todoItem: item,
         updatedFields: newVals,
+        startTime: Date.now(),
       }),
     }).then((response) => {
       console.log("response:", response);
       if (!response.ok) {
         console.error("Failed to update item", response);
+        setList(previousList);
+      } else {
+        console.log("Item updated successfully");
       }
     });
   }

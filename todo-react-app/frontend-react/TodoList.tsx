@@ -1,12 +1,15 @@
 import { useTodoListContext } from "./useTodoList";
+import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 
 export default function TodoList() {
   const { list, updateItem } = useTodoListContext();
+  const navigate = useNavigate();
   let lastChecked = false;
   return (
     <ul>
       {list
+        .sort((a, b) => (a.index > b.index ? -1 : 1))
         .sort((a, b) => (a.complete && b.complete ? 0 : a.complete ? 1 : -1))
         .map((item, key) => {
           let addHR = false;
@@ -45,7 +48,7 @@ export default function TodoList() {
               <i
                 className="fa-solid fa-pen-to-square"
                 onClick={(ev) => {
-                  alert("Edit item: " + item.title);
+                  navigate("/update");
                 }}
               ></i>
               {/* <i className="fa-regular fa-trash-can"></i> */}
