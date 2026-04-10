@@ -99,6 +99,7 @@ input[type="text"] {
 i.fa-solid.fa-pen-to-square {
   float: right;
   visibility: hidden;
+  cursor: pointer;
 }
 
 .todo-item:hover i.fa-solid.fa-pen-to-square {
