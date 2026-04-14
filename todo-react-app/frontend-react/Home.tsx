@@ -12,7 +12,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className="center-block">
       <TodoHeader />
 
       <TodoList />
@@ -20,6 +20,6 @@ export default function App() {
       {addItemDisplayed && (
         <AddItemPopup toggleVisibility={toggleAddItemDisplayed} />
       )}
-    </>
+    </div>
   );
 }

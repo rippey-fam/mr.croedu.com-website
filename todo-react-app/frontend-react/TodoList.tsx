@@ -48,7 +48,7 @@ export default function TodoList() {
               <i
                 className="fa-solid fa-pen-to-square"
                 onClick={(ev) => {
-                  navigate("/update");
+                  navigate(`/update/${item._id}`);
                 }}
               ></i>
               {/* <i className="fa-regular fa-trash-can"></i> */}

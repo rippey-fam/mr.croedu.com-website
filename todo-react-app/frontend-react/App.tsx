@@ -24,7 +24,7 @@ export default function App() {
       <TodoProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/update/" element={<UpdateItem />} />
+          <Route path="/update/:id" element={<UpdateItem />} />
         </Routes>
       </TodoProvider>
     </BrowserRouter>

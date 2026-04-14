@@ -10,7 +10,7 @@ router.get("/api/todos", todoController.todoitems);
 // Serve React router at /todo - all routes serve index.html for client-side routing
 router.get("/", todoController.todo_list);
 router.put("/api/todos", todoController.todoitems_update);
-//anything else
+// anything else
 router.get("/{*path}", todoController.todo_list);
 
 module.exports = router;

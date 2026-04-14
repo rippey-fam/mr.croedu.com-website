@@ -1,24 +1,24 @@
-import { useState } from "react";
-import AddButton from "./AddButton";
-import AddItemPopup from "./AddItemPopup";
-import TodoList from "./TodoList";
-import TodoHeader from "./TodoHeader";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useTodoListContext } from "./useTodoList";
 
-export default function App() {
-  const [addItemDisplayed, changeAddItemDisplayed] = useState(false);
-  function toggleAddItemDisplayed() {
-    changeAddItemDisplayed(!addItemDisplayed);
-    console.log(addItemDisplayed);
-  }
-
+export default function UpdateItem() {
+  const { id } = useParams();
+  const { list, updateItem } = useTodoListContext();
+  const todoitem = list.find((item) => item._id === id);
   return (
-    <>
-      <h1> This is the update page </h1>
+    <div className="center-block">
+      <h1> Edit todo</h1>
+      <p>{id}</p>
+      <form>
+        <label>Todo Title</label>
+        <input type="text" value={todoitem?.title} />
+        <label>Due Date</label>
+        <input type="date"></input>
+        <br />
+      </form>
       <Link
         to="/"
         style={{
-          display: "block",
           marginTop: "1em",
           textAlign: "center",
           color: "white",
@@ -27,6 +27,6 @@ export default function App() {
         Go back to home{" "}
         <i className="fa-solid fa-arrow-up-right-from-square"></i>
       </Link>
-    </>
+    </div>
   );
 }

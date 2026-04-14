@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+hr {
+  border-color: #ccc;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,15 +28,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
 }
 
 #root {
@@ -104,4 +101,12 @@ i.fa-solid.fa-pen-to-square {
 
 .todo-item:hover i.fa-solid.fa-pen-to-square {
   visibility: visible;
+}
+
+div .center-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* column */
+  flex-direction: column;
 }

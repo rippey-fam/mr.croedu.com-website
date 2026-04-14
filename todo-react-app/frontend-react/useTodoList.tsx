@@ -124,6 +124,7 @@ export type TodoItem = {
   index: number;
   due_date?: Date;
   created_at?: Date;
-  todo_list: TodoList; // ObjectId or populated
+  todo_list: TodoList;
+  _id: string;
 };
 export type TodoState = ReturnType<typeof useTodoList>;
