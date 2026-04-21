@@ -34,13 +34,8 @@ export default function TodoList() {
                     updateItem(item, { complete: ev.target.checked });
                   }}
                 />{" "}
-                {item.complete ? <s>{item.title}</s> : item.title}{" "}
-                <span
-                  style={{
-                    color: "gray",
-                    fontSize: "0.8em",
-                  }}
-                >
+                <span className="todo-item-title">{item.complete ? <s>{item.title}</s> : item.title}{" "}</span>
+                <span className="todo-item-due-date">
                   {item.created_at ? format(item.created_at, "MM/dd/yyyy") : ""}
                 </span>
               </label>

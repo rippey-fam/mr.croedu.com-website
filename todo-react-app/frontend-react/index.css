@@ -110,3 +110,32 @@ div .center-block {
   /* column */
   flex-direction: column;
 }
+ul li.todo-item {
+    list-style: none;
+}
+
+li.todo-item label{
+    display: inline-block;
+}
+
+li.todo-item i.fa-pen-to-square{
+    display: inline-block;
+    float: none;
+    margin-right: 10px;
+}
+span.todo-item-title {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    line-height: 22px;
+}
+span.todo-item-due-date {
+    color: gray;
+    font-size: 0.8em;
+    margin: 0px 10px;
+}
+.add-todo-button{
+  padding: 0px 50px;
+}

@@ -7,10 +7,7 @@ export default function AddButton(
   const callback = props.callback;
   return (
     <button
-      style={{
-        width: "100%",
-        padding: "8px",
-      }}
+      className="add-todo-button"
       onClick={() => {
         callback();
       }}
