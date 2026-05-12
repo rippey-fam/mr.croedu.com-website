@@ -39,6 +39,24 @@ exports.todoitems_update = async (req, res) => {
   res.sendStatus(200);
 };
 
+exports.todoitems_add = async (req, res) => {
+  const start = Date.now();
+  console.log(`starting add... time diff ${Date.now() - req.body.startTime}ms`);
+  const todoItem = req.body.todoItem;
+  delete todoItem._id; // Remove temp_id to let MongoDB generate a real one
+  try {
+    const newItem = new Todoitem(todoItem);
+    console.log("starting save");
+    console.log(todoItem);
+    await newItem.save();
+    console.log(`finished add ${Date.now() - start}ms`);
+    res.json({ item: newItem });
+  } catch (err) {
+    console.log(`error: ${err}`);
+    res.status(500).json({ error: "Failed to add todo item" });
+  }
+};
+
 // serving our public built react page
 exports.todo_list = (req, res) => {
   res.sendFile(path.join(__dirname, "../public/todo/dist/index.html"));

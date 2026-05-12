@@ -108,8 +108,47 @@ function useTodoList() {
       }
     });
   }
-  function addItem(item: TodoItem) {
-    setList([...list, item]);
+  function addItem(
+    item: Omit<Omit<TodoItem, "_id">, "todo_list">,
+    todo_list: TodoList,
+  ) {
+    const previousList = list;
+    const newItem = {
+      ...item,
+      _id: "temp-id",
+      todo_list,
+    };
+    setList([...list, newItem]);
+    /*{
+        title: { type: String, required: true, maxLength: 100 },
+        complete: { type: Boolean, required: true },
+        index: { type: Number, required: true },
+        due_date: { type: Date },
+        created_at: { type: Date, default: Date.now },
+        todo_list: { type: Schema.Types.ObjectId, ref: "TodoList", required: true },
+    }*/
+    console.log("making fetch");
+    fetch("/todo/api/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        todoItem: newItem,
+        startTime: Date.now(),
+      }),
+    }).then(async (response) => {
+      console.log("response:", response);
+      if (!response.ok) {
+        console.error("Failed to add item", response);
+        setList(previousList);
+      } else {
+        const data = await response.json();
+        const addedItem = data.item;
+        setList([...list.slice(0, list.length - 2), addedItem]);
+        console.log("Item added successfully");
+      }
+    });
   }
   return { list, updateItem, addItem };
 }
