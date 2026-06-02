@@ -34,19 +34,22 @@ export default function TodoList() {
                     updateItem(item, { complete: ev.target.checked });
                   }}
                 />{" "}
-                <span className="todo-item-title">{item.complete ? <s>{item.title}</s> : item.title}{" "}</span>
+                <span className="todo-item-title">
+                  {item.complete ? <s>{item.title}</s> : item.title}{" "}
+                </span>
                 <span className="todo-item-due-date">
                   {item.created_at ? format(item.created_at, "MM/dd/yyyy") : ""}
                 </span>
               </label>
-
-              <i
-                className="fa-solid fa-pen-to-square"
-                onClick={(ev) => {
-                  navigate(`/update/${item._id}`);
-                }}
-              ></i>
-              {/* <i className="fa-regular fa-trash-can"></i> */}
+              <span className="button-holder">
+                <i
+                  className="fa-solid fa-pen-to-square"
+                  onClick={(ev) => {
+                    navigate(`/update/${item._id}`);
+                  }}
+                ></i>
+                <i className="fa-regular fa-trash-can"></i>
+              </span>
             </li>
           );
         })}

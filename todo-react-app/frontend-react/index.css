@@ -93,13 +93,13 @@ input[type="text"] {
   }
 }
 
-i.fa-solid.fa-pen-to-square {
+.todo-item span.button-holder {
   float: right;
   visibility: hidden;
   cursor: pointer;
 }
 
-.todo-item:hover i.fa-solid.fa-pen-to-square {
+.todo-item:hover span.button-holder {
   visibility: visible;
 }
 
@@ -111,31 +111,31 @@ div .center-block {
   flex-direction: column;
 }
 ul li.todo-item {
-    list-style: none;
+  list-style: none;
 }
 
-li.todo-item label{
-    display: inline-block;
+li.todo-item label {
+  display: inline-block;
 }
 
-li.todo-item i.fa-pen-to-square{
-    display: inline-block;
-    float: none;
-    margin-right: 10px;
+li.todo-item i.fa-pen-to-square {
+  display: inline-block;
+  float: none;
+  margin-right: 10px;
 }
 span.todo-item-title {
-    max-width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    line-height: 22px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  line-height: 22px;
 }
 span.todo-item-due-date {
-    color: gray;
-    font-size: 0.8em;
-    margin: 0px 10px;
+  color: gray;
+  font-size: 0.8em;
+  margin: 0px 10px;
 }
-.add-todo-button{
+.add-todo-button {
   padding: 0px 50px;
 }
