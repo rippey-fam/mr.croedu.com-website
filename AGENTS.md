@@ -15,6 +15,17 @@
 - Prefer showing diffs or "replace X with Y" instructions over full rewrites.
 - Don't add unsolicited improvements, refactors, or extra features to code snippets.
 
+## React Frontend Style
+
+- Keep components small and focused: most UI is split into simple function components with default exports and PascalCase names such as `App`, `TodoList`, `AddItem`, and `UpdateItem`.
+- Put shared todo state in the context hook layer (`useTodoList.tsx`) instead of scattering list logic across pages.
+- Use React Router for page-level flows: home view, add view, and update view.
+- Prefer direct, readable handlers over heavy abstractions: inline `onClick`, `onChange`, and `useEffect` logic is the normal pattern here.
+- Use simple object-spread form state (`setFormVals({ ...formVals, ... })`) for small forms.
+- Keep styling lightweight: use CSS classes for reusable layout, and use inline styles only for small one-off tweaks.
+- Format dates with `date-fns` and keep the current dark, minimal UI style consistent with the existing CSS.
+- The current codebase is intentionally straightforward and practical; preserve that simple, functional style unless the user explicitly asks for a refactor.
+
 ## Explanations
 
 - When walking through code, go section by section with a short header for each.

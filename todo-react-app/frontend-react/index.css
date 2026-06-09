@@ -96,7 +96,12 @@ input[type="text"] {
 .todo-item span.button-holder {
   float: right;
   visibility: hidden;
+  cursor: default !important;
+}
+
+.todo-item span.button-holder i {
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .todo-item:hover span.button-holder {
@@ -121,7 +126,6 @@ li.todo-item label {
 li.todo-item i.fa-pen-to-square {
   display: inline-block;
   float: none;
-  margin-right: 10px;
 }
 span.todo-item-title {
   max-width: 200px;

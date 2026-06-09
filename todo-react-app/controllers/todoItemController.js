@@ -57,6 +57,17 @@ exports.todoitems_add = async (req, res) => {
   }
 };
 
+exports.todoitems_delete = async (req, res) => {
+  const todoItem = req.body.todoItem;
+  const todoItemID = todoItem._id;
+  try {
+    await Todoitem.findByIdAndDelete(todoItemID);
+    res.sendStatus(200);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete todo item" });
+  }
+};
+
 // serving our public built react page
 exports.todo_list = (req, res) => {
   res.sendFile(path.join(__dirname, "../public/todo/dist/index.html"));

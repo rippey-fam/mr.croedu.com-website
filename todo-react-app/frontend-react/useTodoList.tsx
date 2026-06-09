@@ -150,7 +150,29 @@ function useTodoList() {
       }
     });
   }
-  return { list, updateItem, addItem };
+  function deleteItem(item: TodoItem) {
+    const previousList = list;
+    setList(list.filter((old) => old.index !== item.index));
+    fetch("/todo/api/todos", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        todoItem: item,
+        startTime: Date.now(),
+      }),
+    }).then((response) => {
+      console.log("response:", response);
+      if (!response.ok) {
+        console.error("Failed to delete item", response);
+        setList(previousList);
+      } else {
+        console.log("Item deleted successfully");
+      }
+    });
+  }
+  return { list, updateItem, addItem, deleteItem };
 }
 type TodoList = {
   _id: string;

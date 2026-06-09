@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 
 export default function TodoList() {
-  const { list, updateItem } = useTodoListContext();
+  const { list, updateItem, deleteItem } = useTodoListContext();
   const navigate = useNavigate();
   let lastChecked = false;
   return (
@@ -48,7 +48,12 @@ export default function TodoList() {
                     navigate(`/update/${item._id}`);
                   }}
                 ></i>
-                <i className="fa-regular fa-trash-can"></i>
+                <i
+                  className="fa-regular fa-trash-can"
+                  onClick={(ev) => {
+                    deleteItem(item);
+                  }}
+                ></i>
               </span>
             </li>
           );
